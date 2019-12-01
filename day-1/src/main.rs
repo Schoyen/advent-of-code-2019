@@ -1,6 +1,5 @@
 use std::{fs, path::Path};
 
-
 fn fuel_counter(weight: i32) -> i32 {
     let mut fuel_weight = (((weight as f64) / (3 as f64)).floor() as i32) - 2;
 
@@ -11,7 +10,6 @@ fn fuel_counter(weight: i32) -> i32 {
     fuel_weight
 }
 
-
 fn day_1_counter(modules: &Vec<i32>) -> i32 {
     let mut sum = 0;
 
@@ -21,7 +19,6 @@ fn day_1_counter(modules: &Vec<i32>) -> i32 {
 
     sum
 }
-
 
 fn day_2_counter(modules: &Vec<i32>) -> i32 {
     let mut sum = 0;
@@ -37,7 +34,6 @@ fn day_2_counter(modules: &Vec<i32>) -> i32 {
 
     sum
 }
-
 
 fn main() {
     let filename = Path::new("./dat/input.dat");

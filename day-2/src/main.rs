@@ -29,7 +29,7 @@ fn execute_part_1(opcodes: &mut Vec<usize>) -> usize {
     opcodes[0]
 }
 
-fn main() {
+fn read_file() -> Vec<usize> {
     let filename = Path::new("./dat/input.dat");
     let contents = fs::read_to_string(filename).unwrap().trim().to_string();
 
@@ -40,9 +40,36 @@ fn main() {
         opcodes.push(s.parse::<usize>().unwrap());
     }
 
+    opcodes
+}
+
+fn main() {
+    let mut opcodes = read_file();
+
     // Part 1 specification
     opcodes[1] = 12;
     opcodes[2] = 2;
 
     println!("Part 1: {}", execute_part_1(&mut opcodes));
+
+    // Part 2
+    let mut noun_out = 0;
+    let mut verb_out = 0;
+    for noun in 0..100 {
+        for verb in 0..100 {
+            let mut opcodes = read_file();
+            opcodes[1] = noun;
+            opcodes[2] = verb;
+
+            let res = execute_part_1(&mut opcodes);
+
+            if res == 19690720 {
+                noun_out = noun;
+                verb_out = verb;
+                break;
+            }
+        }
+    }
+
+    println!("Part 2: {}", 100 * noun_out + verb_out);
 }
